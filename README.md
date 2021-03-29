@@ -2,6 +2,8 @@
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/sagikazarmark/ansible-role-qbittorrent-nox/CI?style=flat-square)](https://github.com/sagikazarmark/ansible-role-qbittorrent-nox/actions?query=workflow%3ACI)
 [![Ansible Galaxy](http://img.shields.io/badge/galaxy-sagikazarmark.qbittorrent_nox-5fb7b9.svg?style=flat-square)](https://galaxy.ansible.com/sagikazarmark/qbittorrent_nox)
+[![quality](https://img.shields.io/ansible/quality/99265?style=flat-square)](https://galaxy.ansible.com/sagikazarmark/qbittorrent_nox)
+[![downloads](https://img.shields.io/ansible/role/d/99265?style=flat-square)](https://galaxy.ansible.com/sagikazarmark/qbittorrent_nox)
 
 Installs [qBittorrent](https://www.qbittorrent.org/) nox (no X) on Debian and Ubuntu (Raspbian too).
 
@@ -19,9 +21,9 @@ Installs [qBittorrent](https://www.qbittorrent.org/) nox (no X) on Debian and Ub
 ## Example Playbook
 
 ```yaml
-    - hosts: servers
-      roles:
-         - { role: sagikazarmark.qbittorrent_nox }
+- hosts: servers
+    roles:
+        - { role: sagikazarmark.qbittorrent_nox }
 ```
 
 
