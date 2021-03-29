@@ -5,7 +5,7 @@
 [![quality](https://img.shields.io/ansible/quality/53860?style=flat-square)](https://galaxy.ansible.com/sagikazarmark/qbittorrent_nox)
 [![downloads](https://img.shields.io/ansible/role/d/53860?style=flat-square)](https://galaxy.ansible.com/sagikazarmark/qbittorrent_nox)
 
-Installs [qBittorrent](https://www.qbittorrent.org/) nox (no X) on Debian and Ubuntu (Raspbian too).
+Installs [qBittorrent](https://www.qbittorrent.org/) nox (no X) on Debian and Ubuntu (Raspbian too) (based on the [official documentation](https://github.com/qbittorrent/qBittorrent/wiki/Running-qBittorrent-without-X-server-(WebUI-only---systemd-service-setup,-Ubuntu-15.04-or-newer))).
 
 
 ## Role Variables
