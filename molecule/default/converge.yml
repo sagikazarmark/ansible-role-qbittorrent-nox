@@ -3,6 +3,9 @@
   hosts: all
   vars:
     qbittorrent_nox_webui_port: 18080
+  pre_tasks:
+    - name: Update apt cache
+      apt: update_cache=true cache_valid_time=600
   tasks:
     - name: "Include sagikazarmark.qbittorrent_nox"
       include_role:
