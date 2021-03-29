@@ -10,11 +10,12 @@ galaxy_info:
   platforms:
     - name: Debian
       versions:
-        - 9
-        - 10
+        - buster
+        - stretch
     - name: Ubuntu
       versions:
-        - all
+        - bionic
+        - focal
   galaxy_tags:
     - torrent
     - p2p
