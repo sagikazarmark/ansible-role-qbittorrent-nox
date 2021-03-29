@@ -1,0 +1,10 @@
+---
+- name: reload systemd
+  ansible.builtin.systemd:
+    daemon_reload: yes
+  when: "ansible_service_mgr == 'systemd'"
+
+- name: restart service
+  ansible.builtin.service:
+    name: qbittorrent-nox
+    state: restarted

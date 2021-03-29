@@ -1,0 +1,14 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Gather the package facts.
+      ansible.builtin.package_facts:
+        manager: auto
+
+    - name: Assert that qbittorrent-nox package is installed.
+      assert:
+        that: "'qbittorrent-nox' in ansible_facts.packages"

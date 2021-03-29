@@ -1,0 +1,65 @@
+---
+- name: Ensure package is installed.
+  ansible.builtin.package:
+    name: qbittorrent-nox
+    state: "{{ qbittorrent_nox_package_state | default(present) }}"
+  notify: restart service
+
+- name: Gather package facts.
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: Ensure service user exists.
+  ansible.builtin.user:
+    name: "{{ qbittorrent_nox_user }}"
+    comment: qBittorrent nox user
+    shell: /usr/sbin/nologin
+    system: yes
+    groups: "{{ qbittorrent_nox_user_groups | default(omit) }}"
+    state: present
+  register: qbittorrent_nox_user_info
+
+- name: Ensure config directory exists.
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+    owner: "{{ qbittorrent_nox_user_info.name }}"
+    group: "{{ qbittorrent_nox_user_info.group }}"
+  with_items:
+    - "{{ qbittorrent_nox_user_info.home }}/.config/"
+    - "{{ qbittorrent_nox_user_info.home }}/.config/qBittorrent/"
+
+
+- name: Ensure legal notice is accepted.
+  ansible.builtin.lineinfile:
+    path: "{{ qbittorrent_nox_user_info.home }}/.config/qBittorrent/qBittorrent.conf"
+    regexp: "{{ item.re }}"
+    line: "{{ item.line }}"
+    insertafter: "{{ item.after | default(omit) }}"
+    create: yes
+    owner: "{{ qbittorrent_nox_user_info.name }}"
+    group: "{{ qbittorrent_nox_user_info.group }}"
+    mode: 0644
+  with_items:
+    - { re: '^\[LegalNotice\]$', line: "[LegalNotice]" }
+    - { re: "^Accepted=true$", line: "Accepted=true", after: '^\[LegalNotice\]$' }
+
+- name: Ensure systemd unit file is present.
+  ansible.builtin.template:
+    src: qbittorrent-nox.service
+    dest: /etc/systemd/system/qbittorrent-nox.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - reload systemd
+    - restart service
+  when: "ansible_service_mgr == 'systemd'"
+
+- name: Ensure service is enabled at boot.
+  ansible.builtin.systemd:
+    name: qbittorrent-nox
+    enabled: yes
+    daemon_reload: yes
+  when: "ansible_service_mgr == 'systemd'"
