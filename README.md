@@ -1,7 +1,7 @@
 # Ansible Role: qBittorrent nox
 
-[![Build Status](https://img.shields.io/travis/com/webplates/ansible-role-xtrabackup.svg?style=flat-square)](https://travis-ci.com/webplates/ansible-role-xtrabackup)
-[![Ansible Galaxy](http://img.shields.io/badge/galaxy-webplates.xtrabackup-5fb7b9.svg?style=flat-square)](https://galaxy.ansible.com/webplates/xtrabackup)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/sagikazarmark/ansible-role-qbittorrent-nox/CI?style=flat-square)](https://github.com/sagikazarmark/ansible-role-qbittorrent-nox/actions?query=workflow%3ACI)
+[![Ansible Galaxy](http://img.shields.io/badge/galaxy-sagikazarmark.qbittorrent_nox-5fb7b9.svg?style=flat-square)](https://galaxy.ansible.com/sagikazarmark/qbittorrent_nox)
 
 Installs [qBittorrent](https://www.qbittorrent.org/) nox (no X) on Debian and Ubuntu (Raspbian too).
 
